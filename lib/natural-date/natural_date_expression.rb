@@ -1,6 +1,5 @@
 class NaturalDateExpression
-
-  VERSION = "0.1.0"
+  VERSION = "1.1"
 
   def initialize data, reference_date, expression_string
     @data = data

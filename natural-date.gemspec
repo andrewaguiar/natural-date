@@ -2,21 +2,7 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require 'natural-date/translator/step'
-require 'natural-date/translator/cleaner'
-require 'natural-date/translator/expander'
-require 'natural-date/translator/expression_splitter'
-require 'natural-date/translator/minifier'
-require 'natural-date/translator/mod_applier'
-require 'natural-date/translator/mounter'
-require 'natural-date/translator/normalizer'
-require 'natural-date/translator/splitter_literal_date'
-require 'natural-date/translator/time_mounter'
-require 'natural-date/translator/unknown_cleaner'
-require 'natural-date/translator/year_finder'
-require 'natural-date/language_bundle'
-require 'natural-date/natural_date_expression_factory'
-require 'natural-date/natural_date_expression'
+require 'natural-date'
 
 Gem::Specification.new do |spec|
   spec.name          = "natural-date"
@@ -39,5 +25,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.13"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "pry"
 end
