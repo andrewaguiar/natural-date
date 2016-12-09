@@ -14,7 +14,6 @@ require 'natural-date/translator/splitter_literal_date'
 require 'natural-date/translator/time_mounter'
 require 'natural-date/translator/unknown_cleaner'
 require 'natural-date/translator/year_finder'
-require 'natural-date/translator'
 require 'natural-date/language_bundle'
 require 'natural-date/natural_date_expression_factory'
 require 'natural-date/natural_date_expression'
@@ -25,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Andrew S Aguiar"]
   spec.email         = ["andrewaguiar6@gmail.com"]
   spec.summary       = 'Converts natural language in date expressions'
-  spec.description   = 'Natural language date/time parser in Ruby. natural-date can convert from plain text to date expressions that can symbolize single dates, recurrent dates'
+  spec.description   = 'Natural language date/time parser in Ruby. natural-date can convert from plain text to date expressions symbolizing since single dates till recurrent dates'
   spec.homepage      = 'https://github.com/andrewaguiar/natural-date'
   spec.license       = "MIT"
 

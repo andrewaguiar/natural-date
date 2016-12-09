@@ -35,6 +35,12 @@ class NaturalDateExpression
     @data.dup
   end
 
+  def fetch_dates dates_range = nil
+    (dates_range || (Date.today..(Date.today + 365))).to_a.select do |date|
+      match(date).fetch(:match)
+    end
+  end
+
   private
 
   def match_year? date, expression_map

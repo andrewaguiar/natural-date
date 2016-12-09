@@ -22,8 +22,10 @@ module Translator
     private
 
     def yaml
-      base_path = File.dirname(File.expand_path(__FILE__))
-      YAML::load_file(File.join(base_path, 'translator', "#{@lang}.yml"))
+      @yaml ||= begin
+                  base_path = File.dirname(File.expand_path(__FILE__))
+                  YAML::load_file(File.join(base_path, 'translator', "#{@lang}.yml"))
+                end
     end
 
     def load_types_map
@@ -49,6 +51,5 @@ module Translator
     def load_months
       yaml['keys']['month'].values.map { |m| m.split.first }
     end
-
   end
 end

@@ -1,4 +1,4 @@
-# NaturalDate
+# Natural Date
 
 Natural language date/time parser in Ruby. `natural-date` can convert from plain text to date expressions that can 
 symbolize since single dates till recurrent dates.
@@ -37,7 +37,7 @@ puts natural_date.match(Date.new(2016, 8, 1)) # => {:match=>false, :first_matche
 puts natural_date.match(Date.new(2017, 8, 1)) # => {:match=>true, :first_matched_expression=>{:day=>[1], :month=>[8], :year=>[2017]}}
 ```
 
-TODO: Write usage instructions here
+TODO: Write other examples
 
 ## Development
 
