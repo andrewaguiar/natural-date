@@ -1,4 +1,4 @@
-# Natural Date
+# Natural Date - Alpha
 
 Natural language date/time parser in Ruby. `natural-date` can convert from plain text to date expressions that can 
 symbolize since single dates till recurrent dates.
