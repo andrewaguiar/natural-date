@@ -6,7 +6,7 @@ class NaturalDateExpressionFactory
   STEPS = {}
   EXPRESSION_SPLITTER_STEP = {}
 
-  def create expression_string, reference_date
+  def create expression_string, reference_date = Date.today
     NaturalDateExpression.new(create_data_expression(expression_string, reference_date), reference_date, expression_string)
   end
 

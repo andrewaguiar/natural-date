@@ -1,10 +1,31 @@
 class NaturalDateExpression
   VERSION = "1.1"
 
+  class DateMatch
+    attr_reader :first_matched_expression, :tested_date, :reference_date
+
+    def initialize match, first_matched_expression, tested_date, reference_date
+      @match = match
+      @first_matched_expression = first_matched_expression
+      @tested_date = tested_date
+      @reference_date = reference_date
+    end
+
+    def matches?
+      @match
+    end
+  end
+
   def initialize data, reference_date, expression_string
     @data = data
     @reference_date = reference_date
     @expression_string = expression_string
+  end
+
+  alias_method :match?, :=~
+
+  def =~ date
+    match? date
   end
 
   def match date
@@ -16,14 +37,11 @@ class NaturalDateExpression
         match_year?(date, expression_map)
     end
 
-    first_matched_expression = if matches.any?
-                                 @data[matches.each_with_index.find { |exp, index| exp }.last]
-                               else
-                                 nil
-                               end
-
-    { match: matches.any?,
-      first_matched_expression: first_matched_expression }
+    DateMatch.new(matches.any?,
+                  (matches.any?? @data[matches.each_with_index.find { |exp, index| exp }.last] : nil),
+                  first_matched_expression,
+                  @date,
+                  @reference_date)
   end
 
   def recurrent?
