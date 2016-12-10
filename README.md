@@ -51,7 +51,6 @@ natural_date.fetch_dates(Date.today..(Date.today + 5))
 # => array with dates matched inside the interval
 
 # If you don't pass any interval a default interval of Date.today..Date.today + 365 will be given
-
 natural_date.fetch_dates
 # => array with dates matched inside the interval
 ```
