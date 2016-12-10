@@ -22,10 +22,12 @@ class NaturalDateExpression
     @expression_string = expression_string
   end
 
-  alias_method :match?, :=~
+  def match?
+    match(date).matches?
+  end
 
   def =~ date
-    match? date
+    match(date).matches?
   end
 
   def match date
@@ -39,7 +41,6 @@ class NaturalDateExpression
 
     DateMatch.new(matches.any?,
                   (matches.any?? @data[matches.each_with_index.find { |exp, index| exp }.last] : nil),
-                  first_matched_expression,
                   @date,
                   @reference_date)
   end
@@ -53,9 +54,7 @@ class NaturalDateExpression
   end
 
   def fetch_dates dates_range = nil
-    (dates_range || (Date.today..(Date.today + 365))).to_a.select do |date|
-      match(date).fetch(:match)
-    end
+    (dates_range || (Date.today..(Date.today + 365))).to_a.select { |date| self =~ date }
   end
 
   private
