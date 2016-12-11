@@ -63,7 +63,7 @@ refer both single and recurring dates.
   - **Days**: Can be written as numbers `1..31` or ordinals like `['1st'..'31st']`.
   - **Months**: Can be written using the whole name `['January'..'December']` or using the first 3 letters `['Jan'..'Dec']`, also they are case insensitive `'JAN' == 'Jan' == 'jAn'` also you can use numbers if you use the 'of' world before `'1 of 12' == '1st December'`.
   - **Years**: You can write the year as usual 4 digits number like `2016` or you can ignore the year, if you ignore it the year is going to be guessed based on the expression and the reference date
-  - **Week Days**: As months you can write both whole name and abbreviation (first 3 letters) 'monday' == 'mon'.
+  - **Week Days**: As months you can write both whole name and abbreviation (first 3 letters) `'monday' == 'mon'`.
 
 ```ruby
 factory = NaturalDateExpressionFactory.new(:en)
