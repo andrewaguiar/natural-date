@@ -1,5 +1,5 @@
 class NaturalDateExpression
-  VERSION = "1.2"
+  VERSION = "1.3"
 
   class DateMatch
     attr_reader :first_matched_expression, :tested_date, :reference_date
