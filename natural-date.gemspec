@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Andrew S Aguiar"]
   spec.email         = ["andrewaguiar6@gmail.com"]
   spec.summary       = 'Converts natural language in date expressions'
-  spec.description   = 'Natural language date/time parser in Ruby. natural-date can convert from plain text to date expressions symbolizing since single dates till recurrent dates'
+  spec.description   = 'Natural language date parser in Ruby. natural-date can convert from plain text to date expressions symbolizing since single dates till recurrent dates'
   spec.homepage      = 'https://github.com/andrewaguiar/natural-date'
   spec.license       = "MIT"
 
