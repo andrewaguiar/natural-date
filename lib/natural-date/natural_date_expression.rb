@@ -33,14 +33,13 @@ class NaturalDateExpression
   MATCHERS = [
     WeekMatcher,
     MonthMatcher,
-    # TODO LiteralMatcher,
     DayMatcher,
     YearMatcher
   ].freeze
 
   def match date
     matches = @data.map do |expression_map|
-      MATCHERS.map { |matcher| matcher.match?(date, expression_map) }.all?
+      MATCHERS.map { |matcher| matcher.match?(date, @reference_date, expression_map) }.all?
     end
 
     DateMatch.new(matches.any?,
@@ -58,6 +57,6 @@ class NaturalDateExpression
   end
 
   def fetch_dates dates_range = nil
-    (dates_range || (Date.today..(Date.today + 365))).to_a.select { |date| self =~ date }
+    (dates_range || (@reference_date..(@reference_date + 365))).to_a.select { |date| self =~ date }
   end
 end

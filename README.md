@@ -1,7 +1,7 @@
 # Natural Date - Alpha
 
-Natural language date/time parser in Ruby. `natural-date` can convert from plain text to date expressions that can 
-symbolize since single dates till recurrent dates.
+Natural language date parser in Ruby. `natural-date` can convert from plain text to date expressions that can 
+symbolize both single dates and recurrent dates.
 
 ## Installation
 
@@ -50,9 +50,10 @@ natural_date.match?(Date.new(2017, 8, 1))
 natural_date.fetch_dates(Date.today..(Date.today + 5))
 # => array with dates matched inside the interval
 
-# If you don't pass any interval a default interval of Date.today..Date.today + 365 will be given
+# If you don't pass any interval a default interval of reference_date..reference_date + 365 will be given
 natural_date.fetch_dates
 # => array with dates matched inside the interval
+
 ```
 
 ## Types of expressions
@@ -66,6 +67,7 @@ refer both single and recurring dates.
   - **Week Days**: As months you can write both whole name and abbreviation (first 3 letters) `'monday' == 'mon'`.
 
 ```ruby
+# first you need to create a Factory based on a language, nowadays only english and brazilian portuguese are available.
 factory = NaturalDateExpressionFactory.new(:en)
 
 # Day and month
@@ -105,6 +107,13 @@ factory.create('every monday of January')
 # => every monday of January any year
 factory.create('every monday and friday')
 # => every monday and friday of any month and any year.
+
+# You can also pass several dates expressions using a ';' or a '\n' to separate them
+factory.create('1 2 of May 2016 ; 3 4 June 2016')
+# => ['1st May 2016', '2nd May 2016', '3rd June 2016', '4th June 2016']
+
+factory.create("1 May 2016\n4 June 2016")
+# => ['1st May 2016', '4th June 2016']
 ```
 
 ## Contributing

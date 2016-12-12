@@ -1,5 +1,5 @@
 module WeekMatcher
-  def self.match? date, expression_map
+  def self.match? date, reference_date, expression_map
     !expression_map[:week_day] || expression_map[:week_day].any? { |token| match_week_token?(token, date) }
   end
 
