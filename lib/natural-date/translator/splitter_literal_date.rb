@@ -1,6 +1,6 @@
 module Translator
   class SplitterLiteralDate < Step
-    def map tokens, reference_date
+    def map tokens, _reference_date
       tokens.map do |token|
         if token.include? '/'
           translate_day_and_month(token.split('/'))

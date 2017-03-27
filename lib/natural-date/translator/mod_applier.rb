@@ -1,6 +1,6 @@
 module Translator
   class ModApplier < Step
-    def map tokens, reference_date
+    def map tokens, _reference_date
       tokens
         .each_with_index
         .map { |token, index| apply(tokens, token, index) }

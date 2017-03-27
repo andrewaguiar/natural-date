@@ -32,7 +32,7 @@ module Translator
       yaml['keys']
       .map{ |k, v| { k => v.values.join(' ') } }
       .reduce({}){ |map, element| map.merge(element) }
-      .map { |k, v| v.split(' ').map { |v| { v => k.to_sym } } }
+      .map { |k, vs| vs.split(' ').map { |v| { v => k.to_sym } } }
       .flatten
       .reduce({}) { |e, map| map.merge(e) }
     end
@@ -41,7 +41,7 @@ module Translator
       yaml['keys']
       .values
       .reduce({}) { |map, element| map.merge(symbolize_keys(element)) }
-      .reject { |k, v| k == :value }
+      .reject { |k, _v| k == :value }
     end
 
     def symbolize_keys m

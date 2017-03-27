@@ -1,6 +1,6 @@
 module Translator
   class Mounter < Step
-    def map tokens, reference_date
+    def map tokens, _reference_date
       tokens
       .map { |expression_token| [extract_token_type(expression_token), extract_token_value(expression_token)] }
     end

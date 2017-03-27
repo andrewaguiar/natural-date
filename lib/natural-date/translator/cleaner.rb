@@ -1,6 +1,6 @@
 module Translator
   class Cleaner < Step
-    def map tokens, reference_date
+    def map tokens, _reference_date
       tokens
         .strip
         .downcase

@@ -3,10 +3,6 @@ module YearMatcher
     return expression_map[:year].include?(date.year) if expression_map[:year]
     return true if expression_map[:week_day] || !expression_map[:day] || !expression_map[:month]
 
-    require 'pry'
-
-    binding.pry unless date
-
     date.year == reference_date.year
   end
 end

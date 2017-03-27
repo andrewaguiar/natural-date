@@ -1,6 +1,6 @@
 module Translator
   class Normalizer < Step
-    def map tokens, reference_date
+    def map tokens, _reference_date
       tokens
       .map { |token| normalize(token) }
     end

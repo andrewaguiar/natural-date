@@ -43,7 +43,7 @@ class NaturalDateExpression
     end
 
     DateMatch.new(matches.any?,
-                  (matches.any?? @data[matches.each_with_index.find { |exp, index| exp }.last] : nil),
+                  (matches.any?? @data[matches.each_with_index.find { |exp, _index| exp }.last] : nil),
                   @date,
                   @reference_date)
   end
