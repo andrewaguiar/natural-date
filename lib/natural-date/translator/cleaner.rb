@@ -4,11 +4,11 @@ module Translator
       tokens
         .strip
         .downcase
-        .gsub('ç', 'c')
-        .gsub('ã', 'a')
-        .gsub('á', 'a')
-        .gsub('ê', 'e')
-        .gsub('é', 'e')
+        .tr('ç', 'c')
+        .tr('ã', 'a')
+        .tr('á', 'a')
+        .tr('ê', 'e')
+        .tr('é', 'e')
         .gsub(/,|\./, ' ')
         .split(/\s+/)
     end

@@ -1,17 +1,26 @@
 module Translator
   class YearFinder < Step
     def map tokens, reference_date
-      if (years = tokens[:unknown].to_a.select { |t| t.size == 4 && t =~ /\d\d\d\d/ }).any?
-        tokens[:year] = years.map &:to_i
+      if (years = extract_4_digits_years(tokens)).any?
+        tokens[:year] = years.map(&:to_i)
       else
-        if !tokens[:week] && tokens[:day] && tokens[:month]
-          if tokens[:day].size == 1 && tokens[:month].size == 1
-            tokens[:year] = [find_year(tokens[:day].first, tokens[:month].first, reference_date)]
-          end
-        end
+        apply_default_year(tokens, reference_date)
       end
 
       tokens
+    end
+
+    def extract_4_digits_years tokens
+      tokens[:unknown].to_a.select do |t|
+        t.size == 4 && t =~ /\d\d\d\d/
+      end
+    end
+
+    def apply_default_year tokens, reference_date
+      return unless !tokens[:week] && tokens[:day] && tokens[:month]
+      return unless tokens[:day].size == 1 && tokens[:month].size == 1
+
+      tokens[:year] = [find_year(tokens[:day].first, tokens[:month].first, reference_date)]
     end
 
     def find_year day, month, reference_date
